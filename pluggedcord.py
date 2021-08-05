@@ -1,3 +1,4 @@
+import time
 import urllib.request
 import zipfile
 import os
@@ -12,27 +13,28 @@ print("\nCopyright 2021 TeambundyUK\nPermission is hereby granted, free of charg
 print("\nIMPORTANT: Powercord Requires You to Have Nodejs Installed For It To Function, make sure you have this before running the installer, you can download it here: https://nodejs.org\n")
 input("\n[Press Enter To Start The Installation]")
 print("Starting Powercord Download...")
-bar =progressbar.progressbar(range(5), redirect_stdout=True)
-os.mkdir("PowercordInstallerTemp")
-bar.update()
-url = "https://github.com/powercord-org/powercord/archive/refs/heads/v2.zip"
-urllib.request.urlretrieve(url, "PowercordInstallerTemp/Powercord.zip")
-bar.update()
-print("Downloaded Powercord Repository!")
-userdir = os.environ['USERPROFILE']
-bar.update()
-print("Users Home Directory Is ", userdir)
-print("Extracting Powercord Code...")
-with zipfile.ZipFile("PowercordInstallerTemp/Powercord.zip","r") as zip_ref:
-    zip_ref.extractall(str(userdir))
-bar.update()
-print("Extracted Powercord Code!")
-print("Renaming Powercord Directory...")
-renamestart = str(userdir) + "\powercord-2"
-powercorddir = str(userdir) + "\powercord"
-os.rename(renamestart, powercorddir)
-bar.update()
-print("Renamed Powercord Directory!")
+with progressbar.ProgressBar(max_value=5, redirect_stdout=True) as bar:
+    os.mkdir("PowercordInstallerTemp")
+    bar.update(0)
+    url = "https://github.com/powercord-org/powercord/archive/refs/heads/v2.zip"
+    urllib.request.urlretrieve(url, "PowercordInstallerTemp/Powercord.zip")
+    bar.update(1)
+    print("Downloaded Powercord Repository!")
+    userdir = os.environ['USERPROFILE']
+    bar.update(2)
+    print("Users Home Directory Is ", userdir)
+    print("Extracting Powercord Code...")
+    with zipfile.ZipFile("PowercordInstallerTemp/Powercord.zip","r") as zip_ref:
+        zip_ref.extractall(str(userdir))
+    bar.update(3)
+    print("Extracted Powercord Code!")
+    print("Renaming Powercord Directory...")
+    renamestart = str(userdir) + "\powercord-2"
+    powercorddir = str(userdir) + "\powercord"
+    os.rename(renamestart, powercorddir)
+    bar.update(4)
+    time.sleep(2)
+    print("Renamed Powercord Directory!")
 print("\n========Manual Stage========\n")
 print(f"-Now open Command Prompt And Run `cd {powercorddir}`,\n-After you have done this run `npm i`,\n-Finally run `npm run plug`\n")
 input("[Press Enter When Finished]")
@@ -42,21 +44,36 @@ themetoggler = "https://github.com/redstonekasi/theme-toggler/archive/refs/heads
 themeinstaller = "https://github.com/ploogins/PowercordThemeDownloader/archive/refs/heads/master.zip"
 plugininstaller = "https://github.com/LandenStephenss/PowercordPluginDownloader/archive/refs/heads/master.zip"
 input("\nWould you like to install recommended plugins for downloading powercord themes and plugins? [Press Enter]")
-urllib.request.urlretrieve(themetoggler, "PowercordInstallerTemp/themetoggler.zip")
-print("Downloaded Theme Toggler!")
-urllib.request.urlretrieve(themeinstaller, "PowercordInstallerTemp/themeinstaller.zip")
-print("Downloaded Theme Downloader!")
-urllib.request.urlretrieve(plugininstaller, "PowercordInstallerTemp/plugininstaller.zip")
-print("Downloaded Plugin Downloader!")
-plugindir = str(powercorddir) + "\src\Powercord\plugins"
-print("Extracting all plugins...")
-with zipfile.ZipFile("PowercordInstallerTemp/themetoggler.zip","r") as zip_ref:
-    zip_ref.extractall(str(plugindir))
-with zipfile.ZipFile("PowercordInstallerTemp/themeinstaller.zip","r") as zip_ref:
-    zip_ref.extractall(str(plugindir))
-with zipfile.ZipFile("PowercordInstallerTemp/plugininstaller.zip","r") as zip_ref:
-    zip_ref.extractall(str(plugindir))
-print("All Plugins Downloaded!")
+with progressbar.ProgressBar(max_value=7, redirect_stdout=True) as bar:
+    urllib.request.urlretrieve(themetoggler, "PowercordInstallerTemp/themetoggler.zip")
+    print("Downloaded Theme Toggler!")
+    bar.update(1)
+    time.sleep(0.5)
+    urllib.request.urlretrieve(themeinstaller, "PowercordInstallerTemp/themeinstaller.zip")
+    print("Downloaded Theme Downloader!")
+    bar.update(2)
+    time.sleep(0.5)
+    urllib.request.urlretrieve(plugininstaller, "PowercordInstallerTemp/plugininstaller.zip")
+    print("Downloaded Plugin Downloader!")
+    bar.update(3)
+    time.sleep(0.5)
+    plugindir = str(powercorddir) + "\src\Powercord\plugins"
+    print("Extracting all plugins...")
+    bar.update(4)
+    time.sleep(0.5)
+    with zipfile.ZipFile("PowercordInstallerTemp/themetoggler.zip","r") as zip_ref:
+        zip_ref.extractall(str(plugindir))
+    bar.update(5)
+    time.sleep(0.5)
+    with zipfile.ZipFile("PowercordInstallerTemp/themeinstaller.zip","r") as zip_ref:
+        zip_ref.extractall(str(plugindir))
+    bar.update(6)
+    time.sleep(0.5)
+    with zipfile.ZipFile("PowercordInstallerTemp/plugininstaller.zip","r") as zip_ref:
+        zip_ref.extractall(str(plugindir))
+    bar.update(7)
+    time.sleep(1)
+    print("All Plugins Downloaded!")
 print("You Can Now Run Discord Canary With Powercord Installed!")
 input("")
 
