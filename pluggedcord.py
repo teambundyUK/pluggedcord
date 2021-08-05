@@ -75,6 +75,4 @@ with progressbar.ProgressBar(max_value=7, redirect_stdout=True) as bar:
     time.sleep(1)
     print("All Plugins Downloaded!")
 print("You Can Now Run Discord Canary With Powercord Installed!")
-input("")
-
-
+input("[Press Enter To Close]")
