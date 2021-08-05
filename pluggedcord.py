@@ -2,6 +2,7 @@ import urllib.request
 import zipfile
 import os
 import subprocess
+import progressbar
 
 print("\nPluggedcord Installer\n")
 print("\n         # #                   # #        \n       # #     # # # # # # #     # #      \n     # # # # # # # # # # # # # # # # #    \n     # # # # # # # # # # # # # # # # #    \n     # # # # # # # # # # # # # # # # #    \n   # # # # # # # # # # # # # # # # # # #  \n   # # # # # # # # # # # # # # # # # # #  \n   # # # # #     # # # # #     # # # # #  \n   # # # #         # # #         # # # #  \n # # # # #         # # #         # # # # #\n # # # # # #     # # # # #     # # # # # #\n # # # # # # # # # # # # # # # # # # # # #\n # # # # # # # # # # # # # # # # # # # # #\n # # # # #     # # # # # # #     # # # # #\n     # # # #                   # # # #    \n       # # # #               # # # #")
@@ -11,20 +12,26 @@ print("\nCopyright 2021 TeambundyUK\nPermission is hereby granted, free of charg
 print("\nIMPORTANT: Powercord Requires You to Have Nodejs Installed For It To Function, make sure you have this before running the installer, you can download it here: https://nodejs.org\n")
 input("\n[Press Enter To Start The Installation]")
 print("Starting Powercord Download...")
+bar =progressbar.progressbar(range(5), redirect_stdout=True)
 os.mkdir("PowercordInstallerTemp")
+bar.update()
 url = "https://github.com/powercord-org/powercord/archive/refs/heads/v2.zip"
 urllib.request.urlretrieve(url, "PowercordInstallerTemp/Powercord.zip")
+bar.update()
 print("Downloaded Powercord Repository!")
 userdir = os.environ['USERPROFILE']
+bar.update()
 print("Users Home Directory Is ", userdir)
 print("Extracting Powercord Code...")
 with zipfile.ZipFile("PowercordInstallerTemp/Powercord.zip","r") as zip_ref:
     zip_ref.extractall(str(userdir))
+bar.update()
 print("Extracted Powercord Code!")
 print("Renaming Powercord Directory...")
 renamestart = str(userdir) + "\powercord-2"
 powercorddir = str(userdir) + "\powercord"
 os.rename(renamestart, powercorddir)
+bar.update()
 print("Renamed Powercord Directory!")
 print("\n========Manual Stage========\n")
 print(f"-Now open Command Prompt And Run `cd {powercorddir}`,\n-After you have done this run `npm i`,\n-Finally run `npm run plug`\n")
