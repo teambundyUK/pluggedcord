@@ -1,4 +1,4 @@
-# Pluggedcord Development
+# Pluggedcord
 
 This is a development branch, it is not recommended to use the code here!
 
