@@ -1,7 +1,5 @@
 # Pluggedcord
 
-This is a development branch, it is not recommended to use the code here!
-
 An unofficial, simplified installer for the powercord discord client mod, you can find more info about it here https://powercord.dev/
 Written in python - requires nodejs to work https://nodejs.org
 
