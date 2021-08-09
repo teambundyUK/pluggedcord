@@ -4,10 +4,14 @@ import zipfile
 import os
 import subprocess
 import progressbar
-from pyfiglet import Figlet
 
-plugfont = Figlet(font="rectangles")
-print(plugfont.renderText("Pluggedcord"))
+print("")
+print(" _____ _                   _               _")
+print("|  _  | |_ _ ___ ___ ___ _| |___ ___ ___ _| |")
+print("|   __| | | | . | . | -_| . |  _| . |  _| . |")
+print("|__|  |_|___|_  |_  |___|___|___|___|_| |___|")
+print("            |___|___|")
+print("")
 print("\nWARNING: Powercord is technically against discords Terms of Service, you can learn more here: https://powercord.dev/faq")
 print("Welcome to the Pluggedcord installer for powercord, it is used to make the installation of powercord much easier without having to use git, this is not an official part of powercord!")
 input("\n[Press Enter To Read Licences]")
